@@ -1,0 +1,21 @@
+
+
+<div id="new-peep">
+	<form action="/peeps" method="post">
+		<input name="message" placeholder="What's on your mind&hellip;" id="text_area">
+		<input type="submit" value="Post" id="post">
+		<!-- <input type="text" name="message"> -->
+	</form>
+</div>
+
+
+<% @peeps.each do |peep| %>
+	<div id="article">
+	<p>
+		<%= peep.message %>
+		<a href="/<%= peep.id %>">[edit]</a>
+	</p>
+	<p class="meta">Posted at: <%= peep.created_at %></p>
+</div>
+<% end %>
+

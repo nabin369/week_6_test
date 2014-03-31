@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf8">
+	<title><%= @title %></title>
+	<link href="stylesheet/reset.css" rel="stylesheet" type="text/css">
+	<link href="stylesheet/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+	<div id="main">
+		<%= partial :header %>
+		<%= partial :flash %>
+		<%= yield %>
+	</div>
+</body>
+</html>

@@ -1,0 +1,15 @@
+
+	<div id="edit">
+		<% if @peep %>
+			<form action="/<%= @peep.id %>" method="post">
+			<input type="hidden" name="_method" value="put">
+			<input name="message" value="<%= @peep.message %>">
+			<input type="submit" value="Post">
+			</form>
+
+			<p><a href="/<%= @peep.id %>/delete">Delete</a></p>
+		<% else %>
+			<p>Peep not found.</p>
+		<% end %>
+
+	</div>
