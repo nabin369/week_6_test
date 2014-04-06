@@ -13,6 +13,12 @@ feature 'User signs up' do
 		expect(page).to have_content("Sorry, your password doesn't match")
 	end	
 
+	scenario 'with an email that is already taken' do
+		lambda { sign_up }.should change(User, :count).by(1)
+		lambda { sign_up }.should change(User, :count).by(0)
+		expect(page).to have_content("Sorry, this email is already taken")
+	end
+
 	def sign_up(email="test@test.com", password="test", password_confirmation="test")
 		visit '/users/new'
 		fill_in 'email', :with => email
