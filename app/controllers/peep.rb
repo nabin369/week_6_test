@@ -1,5 +1,6 @@
 get '/peeps' do
 	peep = params[:message]
-	Peep.create(:message => peep)
+	user = User.get(session[:user_id])
+	Peep.create(:user => user, :message => peep)
 	redirect to('/')
 end
