@@ -11,7 +11,7 @@ class User
 	attr_reader :password
 	attr_accessor :password_confirmation
 
-	validates_confirmation_of :password
+	validates_confirmation_of :password, :message => "Sorry, your password doesn't match"
 
 	def password=(password)
 		@password = password

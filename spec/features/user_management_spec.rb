@@ -10,6 +10,7 @@ feature 'User signs up' do
 	
 	scenario 'with incorrect password' do
 		lambda { sign_up("a@a.com", "right", "wrong") }.should change(User, :count).by(0)
+		expect(page).to have_content("Sorry, your password doesn't match")
 	end	
 
 	def sign_up(email="test@test.com", password="test", password_confirmation="test")
