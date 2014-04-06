@@ -9,7 +9,8 @@ post '/users' do
 
 	if user.save
 		session[:user_id] = user.id
-	else
 		redirect to('/')
+	else
+		erb :'users/new'
 	end
 end
