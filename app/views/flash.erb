@@ -3,3 +3,7 @@
 		<%= error %>
 	<% end %>
 <% end %>
+
+<% if flash[:notice] %>
+	<%= flash[:notice] %>
+<% end %>
