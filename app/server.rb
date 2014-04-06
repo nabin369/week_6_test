@@ -12,6 +12,7 @@ require_relative './data_mapper_setup'
 require_relative './controllers/home'
 require_relative './controllers/peep'
 require_relative './controllers/user'
+require_relative './controllers/sessions'
 
 set :partial_template_engine, :erb
 
