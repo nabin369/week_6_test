@@ -1,4 +1,4 @@
 get '/' do
-	@peep = Peep.all
+	@peep = Peep.all :order => :id.desc
 	erb :home
 end

@@ -1,0 +1,15 @@
+<h1><a href="/">Chitter</a></h1>
+
+<% if current_user %>
+        Welcome, <%= current_user.email %>
+
+        <form action='/sessions' method='post'>
+                <input type='hidden' name='_method' value='delete'>
+                <input type='submit' value='Sign out'>
+        </form>
+
+        <%= partial :new %>
+<% else %>
+	<h4><a href="/sessions/new">Sign in</a></h4>
+	<h4><a href="/users/new">Sign up</a></h4>
+<% end %>
