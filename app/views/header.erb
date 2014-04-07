@@ -1,16 +1,16 @@
 <div class="header">
-	<h1><a href="/">Chitter</a></h1>
+	<a href="/">Chitter</a>
 
 	<% if current_user %>
         	Welcome, <%= current_user.email %>
-
+			
+			<a href="/new" id='post-peep' class='button'>Post</a>
         	<form action='/sessions' method='post'>
                 	<input type='hidden' name='_method' value='delete'>
                 	<input type='submit' value='Sign out'>
         	</form>
-        	<%= partial :new %>
 	<% else %>
-		<h4><a href="/sessions/new">Sign in</a></h4>
-		<h4><a href="/users/new">Sign up</a></h4>
+		<a href="/sessions/new">Sign in</a>
+		<a href="/users/new">Sign up</a>
 	<% end %>
 </div>
