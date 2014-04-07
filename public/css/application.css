@@ -1,7 +1,3 @@
-* {
-  box-sizing: border-box;
-}
-
 body {
 	margin: 10px auto;
 	width: 640px;
@@ -9,11 +5,10 @@ body {
 }
 
 header {
-	background-color: #CEF5D2;
+	background-color: darkseagreen;
 	height: 40px;
 	display: flex;
 	padding: 0 20px;
-	box-shadow: 0 0 5px rgba(0,0,0,0.4);
 }
 
 a.button {
@@ -48,10 +43,9 @@ header #user-peeps {
 	text-align: right;
 }
 
-#peeps-container,  #new-peep {
-	background-color: darkseagreen;
+#peeps-container, #container {
+	background-color: #CEF5D2;
 	margin-top: 10px;
-	box-shadow: 0 0 5px rgba(0,0,0,0.4);
 	padding: 10px;
 }
 
@@ -59,7 +53,7 @@ header #user-peeps {
 	box-shadow: 0 0 5px rgba(0,0,0,0.4);
 	margin: 10px;
 	padding: 15px 10px;
-	background-color: rgb(3, 236, 115);
+	background-color: rgb(209, 245, 226);
 }
 .peep .message {
 	font-size: 20px;
@@ -68,9 +62,12 @@ header #user-peeps {
 	float: right;
 }
 
-#container {
-  background-color: white;
-  margin: 40px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.4);
-  padding: 10px;
+#notice {
+  text-align: center;
+  margin: 5px;
+  padding: 5px;
+  background-color: rgba(243, 6, 25, 0.75);
+  color: white;
 }
+
+
