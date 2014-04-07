@@ -3,7 +3,7 @@ require 'data_mapper'
 require 'rack-flash'
 require 'sinatra/partial'
 
-# require 'database_cleaner'
+require 'database_cleaner'
 
 require_relative './models/peep'
 require_relative './models/user'
