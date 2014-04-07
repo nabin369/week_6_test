@@ -1,7 +1,0 @@
-<ul>
-	<% @peep.each do |peep| %>
-		<li><%= peep.message %></li>
-		<p><%= peep.user.email %></p>
-		<p>created at:<%= peep.created_at.strftime("at %I:%M%p,  %m/%d/%Y") %></p>
-	<% end %>
-</ul>
