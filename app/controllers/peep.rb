@@ -1,8 +1,10 @@
 post '/peeps' do
-	message = params["message"]
-	Peep.create(:message => message,
-							:created_at => Time.now,
-							:updated_at => Time.now)
-
+	peep = params[:message]
+	user = User.get(session[:user_id])
+	Peep.create(:user => user, :message => peep)
 	redirect to('/')
+end
+
+get '/new' do
+	erb :new
 end

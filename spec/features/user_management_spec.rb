@@ -1,74 +1,63 @@
 require 'spec_helper'
-require_relative 'helpers/session'
+require_relative './helpers/session'
 
 include SessionHelpers
 
+feature 'User signs up' do
 
-feature "User signs up" do 
-
-	scenario "when being logged out" do
-		lambda {sign_up}.should change(User, :count).by(1)
-		expect(page).to have_content("alice")
-		expect(User.first.name).to eq("alice example")
+	scenario 'when being logged out' do
+		lambda { sign_up }.should change(User, :count).by(1)
+		expect(page).should have_content("Welcome, test@test.com")
+		expect(User.first.email).to eq("test@test.com")
 	end
+	
+	scenario 'with incorrect password' do
+		lambda { sign_up("a@a.com", "right", "wrong") }.should change(User, :count).by(0)
+		expect(page).to have_content("Sorry, your password doesn't match")
+	end	
 
-	scenario "with a password that doesn't match" do
-		lambda { sign_up('a@a.com', 'alice example', 'alice', 'pass', 'wrong')}.should change(User, :count).by(0)
-		expect(current_path).to eq('/users')
-		expect(page).to have_content("Sorry, Password does not match the confirmation")
-	end
-
-	scenario "with email that is already taken" do
+	scenario 'with an email that is already taken' do
 		lambda { sign_up }.should change(User, :count).by(1)
 		lambda { sign_up }.should change(User, :count).by(0)
+		expect(page).to have_content("Sorry, this email is already taken")
 	end
 end
-	
-	feature "User signs in" do
-		
-		before(:each) do
-			User.create(:email => "test@test.com",
-									:name => "test",
-									:user_name => "test",
-									:password => "orange",
-									:password_confirmation => "orange")
-		end	
 
-		scenario "with correct credential" do
-			visit '/'
-			expect(page).not_to have_content("Welcome, test")
-			sign_in('test@test.com', 'orange')
-			expect(page).to have_content("Welcome, test")
-		end
+feature 'User signs in' do
 
-		scenario "with incorrect credentials" do
-			visit '/'
-			expect(page).not_to have_content("Welcome, test")
-			sign_in('test@test.com', 'banana')
-			expect(page).not_to have_content("Welcome, test")
-		end
+	before(:each) do
+		User.create(:email => "test@test.com",
+				:password => "test",
+				:password_confirmation => "test")
 	end
 
-	feature "User signs out" do
-
-		before(:each) do
-			User.create(:email => "test@test.com",
-									:name => "test",
-									:user_name => "test",
-									:password => "orange",
-									:password_confirmation => "orange")
-		end
-
-		scenario "while being signed in" do
-			sign_in("test@test.com", "test")
-			click_button "Sign out"
-			expect(page).to have_content("Good bye!")
-			expect(page).not_to have_content("Welcome, test")
-		end
+	scenario 'with correct crediantial' do
+		visit '/'
+		expect(page).not_to have_content("Welcome, test@test.com")
+		sign_in("test@test.com", "test")
+		expect(page).to have_content("Welcome, test@test.com")
 	end
 
+	scenario 'with incorrect crediantial' do
+		visit '/'
+		expect(page).not_to have_content("Welcome, test@test.com")
+		sign_in("test@test.com", "wrong")
+		expect(page).not_to have_content("Welcome, test@test.com")
+	end
+end
 
+feature 'User signs out' do
 
+	before(:each) do
+		User.create(:email => "test@test.com",
+				:password => "test",
+				:password_confirmation => "test")
+	end
 
-
-
+	scenario 'while being signed in' do
+		sign_in("test@test.com", "test")
+		click_button "Sign out"
+		expect(page).to have_content("Good bye!")
+		expect(page).not_to have_content("Welcome, test@test.com")
+	end
+end

@@ -1,9 +1,7 @@
-ENV["RACK_ENV"] = 'test'
+ENV["RACK_ENV"] = "test"
 
-require 'database_cleaner'
+require './app/server'
 require 'capybara/rspec'
-
-require_relative '../app/server'
 
 Capybara.app = Sinatra::Application
 
@@ -25,21 +23,15 @@ RSpec.configure do |config|
   config.order = 'random'
 
   config.before(:suite) do
-  	DatabaseCleaner.strategy = :transaction
-  	DatabaseCleaner.clean_with(:truncation)
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
   end
 
   config.before(:each) do
-  	DatabaseCleaner.start
+    DatabaseCleaner.start
   end
 
   config.after(:each) do
-  	DatabaseCleaner.clean
+    DatabaseCleaner.clean
   end
-
 end
-
-
-
-
-

@@ -1,5 +1,4 @@
 get '/' do
-	@peeps = Peep.all :order => :id.desc
-	@title = "All Peeps"
-	erb :home
+	@peep = Peep.all :order => :id.desc
+	erb :index
 end

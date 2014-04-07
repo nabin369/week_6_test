@@ -1,0 +1,73 @@
+body {
+	margin: 10px auto;
+	width: 640px;
+	background-color: rgb(50, 58, 52);
+}
+
+header {
+	background-color: darkseagreen;
+	height: 40px;
+	display: flex;
+	padding: 0 20px;
+}
+
+a.button {
+	display: inline-block;
+	width: 80px;
+	border: 2px solid black;
+	border-radius: 4px;
+	text-align: center;
+	margin-right: 5px;
+	margin-left: 5px;
+
+}
+
+header > * {
+	margin: auto;
+}
+
+header #logo {
+	display: flex;
+	margin-right: 20px;
+	font-size: 30px;
+	font-family: fantasy;
+}
+
+header a {
+	text-decoration: none;
+}
+
+header #user-peeps {
+	flex: 1;
+	-webkit-flex: 1;
+	text-align: right;
+}
+
+#peeps-container, #container {
+	background-color: #CEF5D2;
+	margin-top: 10px;
+	padding: 10px;
+}
+
+.peep {
+	box-shadow: 0 0 5px rgba(0,0,0,0.4);
+	margin: 10px;
+	padding: 15px 10px;
+	background-color: rgb(209, 245, 226);
+}
+.peep .message {
+	font-size: 20px;
+}
+.peep .time {
+	float: right;
+}
+
+#notice {
+  text-align: center;
+  margin: 5px;
+  padding: 5px;
+  background-color: rgba(243, 6, 25, 0.75);
+  color: white;
+}
+
+

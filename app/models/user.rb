@@ -1,21 +1,19 @@
 require 'bcrypt'
 
 class User
-
+	
 	include DataMapper::Resource
+
+	property :id,			Serial
+	property :email,		String, :unique => true, :message => "Sorry, this email is already taken"
+	property :password_digest,	Text
 
 	attr_reader :password
 	attr_accessor :password_confirmation
 
-	property :id, 				Serial
-	property :email, 			String, :unique => true, :message => "This email is already taken"
-	property :name, 			String
-	property :user_name, 	String
-	property :password_digest, 	Text
+	validates_confirmation_of :password, :message => "Sorry, your password doesn't match"
 
-	validates_confirmation_of :password
-	validates_uniqueness_of :email
-
+	has n, :peeps, :through => Resource
 
 	def password=(password)
 		@password = password
@@ -24,12 +22,12 @@ class User
 
 	def self.authenticate(email, password)
 		user = first(:email => email)
-
+		
 		if user && BCrypt::Password.new(user.password_digest) == password
 			user
 		else
 			nil
 		end
 	end
-	
+
 end
