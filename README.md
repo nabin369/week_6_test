@@ -5,7 +5,6 @@ Friday 14th February 2014 test.
 -------------------------------
 
 Task: 
-
 *Write a little Twitter clone that will allow the users to post message to a public stream.
 
 Features: 
